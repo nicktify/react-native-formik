@@ -36,30 +36,26 @@ const App = () => {
           lastName: '',
           email: '',
         }}
-        onSubmit={values => {
-          // same shape as initial values
-          console.log(values);
-        }}
-       validationSchema={SignupSchema}
+        onSubmit={console.log}
+        validationSchema={SignupSchema}
       >
-    {({ handleChange, handleBlur, handleSubmit, values, errors }) => {
-      console.log('errors', errors)
-      return (
-        <View>
-        <TextInput
-        onChangeText={handleChange('email')}
-        onBlur={handleBlur('email')}
-        value={values.email}
-        errors={errors.email}
-        />
-        {errors.email
-          && (
-            <Text style={{ color: 'red' }}>{errors.email}</Text>
-          )}
-        <Button onPress={handleSubmit} title="Submit" />
-        </View>
-      )
-    }}
+        {({ handleChange, handleBlur, handleSubmit, values, errors }) => {
+          return (
+            <View>
+              <TextInput
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                value={values.email}
+                errors={errors.email}
+              />
+              {errors.email
+                && (
+                  <Text style={{ color: 'red' }}>{errors.email}</Text>
+                )}
+              <Button onPress={handleSubmit} title="Submit" />
+            </View>
+          )
+        }}
       </Formik>
     </View>
   )
